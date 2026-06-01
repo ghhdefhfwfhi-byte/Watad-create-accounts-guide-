@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل إنشاء وربط حسابات فيسبوك وإنستغرام - Watad Agency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1E90DD 0%, #141E3C 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1E90DD 0%, #0D5BA5 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 4px solid #FFB800;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+
+        .header small {
+            display: block;
+            font-size: 14px;
+            opacity: 0.85;
+            margin-top: 10px;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+            padding: 0 30px;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .nav-tabs button {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: 180px;
+            font-family: inherit;
+        }
+
+        .nav-tabs button:hover {
+            color: #1E90DD;
+        }
+
+        .nav-tabs button.active {
+            color: #1E90DD;
+            border-bottom-color: #1E90DD;
+            background: #f0f7ff;
+        }
+
+        /* Content Sections */
+        .content {
+            padding: 40px 30px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Step Cards */
+        .step-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-right: 4px solid #1E90DD;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            box-shadow: 0 5px 20px rgba(30, 144, 221, 0.1);
+            transform: translateX(-5px);
+        }
+
+        .step-card h3 {
+            color: #1E90DD;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+        }
+
+        .step-icon {
+            font-size: 24px;
+            width: 35px;
+            height: 35px;
+            background: #E6F1FB;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .steps-list {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .step-item:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            background: #1E90DD;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .step-text {
+            color: #333;
+            flex: 1;
+            padding-top: 2px;
+            font-size: 14px;
+        }
+
+        /* Video Container (Embedded - يشتغل داخل الصفحة) */
+        .video-block {
+            background: linear-gradient(135deg, #1E90DD 0%, #0D5BA5 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 5px 20px rgba(30, 144, 221, 0.2);
+        }
+
+        .video-block h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .video-fallback {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .video-fallback a {
+            display: inline-block;
+            background: #FFB800;
+            color: #0D5BA5;
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .video-fallback a:hover {
+            background: #ffc933;
+            transform: translateY(-2px);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #E6F1FB;
+            border-right: 4px solid #1E90DD;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #0D5BA5;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            border-top: 2px solid #e9ecef;
+            color: #666;
+        }
+
+        .footer h4 {
+            color: #1E90DD;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .footer-contact {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+            color: #1E90DD;
+            font-weight: 600;
+        }
+
+        /* Success Message */
+        .success-box {
+            background: #E8F5E9;
+            border-right: 4px solid #4CAF50;
+            padding: 15px;
+            border-radius: 6px;
+            color: #2E7D32;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        /* Tip Box (لماذا الربط مهم - قيمة للميديا باير) */
+        .tip-box {
+            background: #FFF3E0;
+            border-right: 4px solid #FF9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tip-box h4 {
+            color: #E65100;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .tip-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #BF6000;
+        }
+
+        .tip-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .check {
+            color: #4CAF50;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 22px; }
+            .nav-tabs { padding: 0 8px; }
+            .nav-tabs button { font-size: 13px; min-width: auto; padding: 12px 8px; }
+            .content { padding: 20px 15px; }
+            .step-card { padding: 15px; }
+            .step-card h3 { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>دليل إنشاء وربط حسابات السوشيال ميديا</h1>
+            <p>Facebook + Instagram + Linking</p>
+            <small>من Watad Agency | دليل عملي خطوة بخطوة بالفيديو</small>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="active" onclick="switchTab('facebook', event)">📘 إنشاء حساب فيسبوك</button>
+            <button onclick="switchTab('instagram', event)">📷 إنشاء حساب إنستغرام</button>
+            <button onclick="switchTab('linking', event)">🔗 ربط الحسابين</button>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- ===== Tab 1: Facebook ===== -->
+            <div id="facebook" class="tab-content active">
+                <div class="success-box">
+                    ✓ هذا التاب يشرح أفضل طريقة لإنشاء حساب فيسبوك احترافي يصلح كأساس لصفحة الأعمال والإعلانات
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-icon">📘</span> 1. إنشاء حساب Facebook الشخصي</h3>
+                    <p class="step-subtitle">الحساب الشخصي هو الأساس (Anchor) الذي تُدار من خلاله صفحة الأعمال والإعلانات</p>
+
+                    <div class="info-box">
+                        💡 <strong>نصيحة:</strong> استخدم بريد العمل (مثل اسمك@watad.agency) بدل البريد الشخصي حتى تبقى كل الإشعارات والصلاحيات منظمة بمكان واحد.
+                    </div>
+
+                    <div class="steps-list">
+                        <div class="step-item"><span class="step-number">1</span><span class="step-text">افتح المتصفح وروح على <strong>facebook.com</strong> أو نزّل تطبيق Facebook من App Store / Google Play</span></div>
+                        <div class="step-item"><span class="step-number">2</span><span class="step-text">اضغط على زر <strong>Create New Account</strong> (إنشاء حساب جديد)</span></div>
+                        <div class="step-item"><span class="step-number">3</span><span class="step-text">أدخل <strong>الاسم الأول والأخير</strong> — استخدم اسمك الحقيقي (سياسة فيسبوك للأسماء الحقيقية)</span></div>
+                        <div class="step-item"><span class="step-number">4</span><span class="step-text">أدخل <strong>رقم موبايل فعّال أو بريد إلكتروني</strong> (لازم تكون قادر تستلم كود التحقق عليه)</span></div>
+                        <div class="step-item"><span class="step-number">5</span><span class="step-text">أنشئ <strong>باسوورد قوي</strong> (أحرف كبيرة + أرقام + رموز)</span></div>
+                        <div class="step-item"><span class="step-number">6</span><span class="step-text">حدد <strong>تاريخ الميلاد</strong> والجنس ثم اضغط <strong>Sign Up</strong></span></div>
+                        <div class="step-item"><span class="step-number">7</span><span class="step-text">أدخل <strong>كود التحقق</strong> اللي يوصلك على الإيميل أو الموبايل لتفعيل الحساب</span></div>
+                        <div class="step-item"><span class="step-number">8</span><span class="step-text">فعّل <strong>Two-Factor Authentication (2FA)</strong> من إعدادات الأمان لحماية الحساب</span></div>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #1E90DD 0%, #0D5BA5 100%); padding: 40px; border-radius: 8px; text-align: center; margin-top: 15px; box-shadow: 0 5px 20px rgba(30, 144, 221, 0.2);">
+                        <h4 style="color: white; margin-bottom: 15px; font-size: 18px;">📺 شرح إنشاء حساب فيسبوك</h4>
+                        <a href="https://youtu.be/S_-SwZUp4iY" target="_blank" style="display: inline-block; background: #FFB800; color: #0D5BA5; padding: 14px 32px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all 0.3s ease; border: none; cursor: pointer;">
+                            🎬 شاهد الفيديو على YouTube
+                        </a>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-icon">🏢</span> 2. إنشاء صفحة الأعمال (Facebook Page)</h3>
+                    <p class="step-subtitle">الصفحة هي الوجه الرسمي للبراند وهي اللي تُربط بحساب الإعلانات لاحقاً</p>
+
+                    <div class="steps-list">
+                        <div class="step-item"><span class="step-number">1</span><span class="step-text">من حسابك الشخصي روح على <strong>Pages</strong> ثم اضغط <strong>Create New Page</strong></span></div>
+                        <div class="step-item"><span class="step-number">2</span><span class="step-text">أدخل <strong>اسم الصفحة</strong> (اسم البراند) واختر <strong>الفئة / Category</strong> المناسبة</span></div>
+                        <div class="step-item"><span class="step-number">3</span><span class="step-text">أضف <strong>وصف (Bio)</strong> مختصر يوضّح نشاط البراند</span></div>
+                        <div class="step-item"><span class="step-number">4</span><span class="step-text">ارفع <strong>صورة بروفايل (اللوغو)</strong> وصورة غلاف (Cover) بمقاس 16:9 (الحد الأدنى 400×225)</span></div>
+                        <div class="step-item"><span class="step-number">5</span><span class="step-text">اضغط <strong>Create Page</strong> وأكمل معلومات التواصل (موقع، رقم، WhatsApp)</span></div>
+                    </div>
+
+                    <div class="info-box">
+                        📌 <strong>ملاحظة للميديا باير:</strong> صفحة الأعمال + حساب إعلاني داخل Meta Business Suite هما اللي يفتحون لك إدارة الحملات بشكل احترافي.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== Tab 2: Instagram ===== -->
+            <div id="instagram" class="tab-content">
+                <div class="success-box">
+                    ✓ هذا التاب يشرح إنشاء حساب إنستغرام وتحويله إلى <strong>Professional / Business</strong> للوصول لأدوات الإعلانات والتحليلات
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-icon">📷</span> 1. إنشاء حساب Instagram</h3>
+                    <p class="step-subtitle">إنشاء الحساب الأساسي ثم تجهيزه ليتحوّل لحساب أعمال</p>
+
+                    <div class="info-box">
+                        💡 <strong>نصيحة:</strong> استخدم اسم مستخدم (username) يطابق اسم البراند، وبريد العمل بدل البريد الشخصي.
+                    </div>
+
+                    <div class="steps-list">
+                        <div class="step-item"><span class="step-number">1</span><span class="step-text">نزّل تطبيق <strong>Instagram</strong> من App Store أو Google Play</span></div>
+                        <div class="step-item"><span class="step-number">2</span><span class="step-text">اضغط <strong>Sign Up</strong> وأدخل البريد الإلكتروني أو رقم الموبايل</span></div>
+                        <div class="step-item"><span class="step-number">3</span><span class="step-text">اختر <strong>اسم المستخدم (Username)</strong> المطابق لاسم البراند</span></div>
+                        <div class="step-item"><span class="step-number">4</span><span class="step-text">أنشئ <strong>باسوورد قوي</strong> وأكمل خطوات التسجيل</span></div>
+                        <div class="step-item"><span class="step-number">5</span><span class="step-text">أكّد الحساب عبر <strong>كود التحقق</strong> اللي يوصلك على البريد/الموبايل</span></div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-icon">⚙️</span> 2. التحويل إلى حساب Professional (Business)</h3>
+                    <p class="step-subtitle">يفتح لك أدوات الإحصائيات (Insights) والإعلانات وأزرار التواصل</p>
+
+                    <div class="steps-list">
+                        <div class="step-item"><span class="step-number">1</span><span class="step-text">روح على <strong>Settings and privacy</strong> → <strong>Account type and tools</strong></span></div>
+                        <div class="step-item"><span class="step-number">2</span><span class="step-text">اضغط <strong>Switch to professional account</strong></span></div>
+                        <div class="step-item"><span class="step-number">3</span><span class="step-text">اختر <strong>Business</strong> ثم حدد <strong>الفئة (Category)</strong> اللي تصف البراند</span></div>
+                        <div class="step-item"><span class="step-number">4</span><span class="step-text">أضف <strong>صورة بروفايل (اللوغو)</strong> و<strong>Bio</strong> قصير وواضح</span></div>
+                        <div class="step-item"><span class="step-number">5</span><span class="step-text">أضف <strong>رابط الموقع</strong> ومعلومات التواصل (إيميل / رقم)</span></div>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #1E90DD 0%, #0D5BA5 100%); padding: 40px; border-radius: 8px; text-align: center; margin-top: 15px; box-shadow: 0 5px 20px rgba(30, 144, 221, 0.2);">
+                        <h4 style="color: white; margin-bottom: 15px; font-size: 18px;">📺 شرح إنشاء حساب إنستغرام</h4>
+                        <a href="https://youtu.be/cXzrk0EhJ-I" target="_blank" style="display: inline-block; background: #FFB800; color: #0D5BA5; padding: 14px 32px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all 0.3s ease; border: none; cursor: pointer;">
+                            🎬 شاهد الفيديو على YouTube
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== Tab 3: Linking ===== -->
+            <div id="linking" class="tab-content">
+                <div class="success-box">
+                    ✓ هذا التاب يشرح ربط حساب Instagram بصفحة Facebook عبر <strong>Meta Business Suite</strong> — الطريقة الأنسب للوكالات والإعلانات
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-icon">🔗</span> الطريقة الأساسية: عبر Meta Business Suite</h3>
+                    <p class="step-subtitle">الأنسب لو تدير صفحة أعمال أو حسابات عملاء</p>
+
+                    <div class="steps-list">
+                        <div class="step-item"><span class="step-number">1</span><span class="step-text">روح على <strong>Meta Business Suite</strong> (business.facebook.com) واختر صفحة الفيسبوك</span></div>
+                        <div class="step-item"><span class="step-number">2</span><span class="step-text">اضغط على <strong>Settings</strong> (الترس)</span></div>
+                        <div class="step-item"><span class="step-number">3</span><span class="step-text">اختر <strong>Linked accounts</strong> من القائمة ثم <strong>Instagram</strong></span></div>
+                        <div class="step-item"><span class="step-number">4</span><span class="step-text">اضغط <strong>Connect account</strong></span></div>
+                        <div class="step-item"><span class="step-number">5</span><span class="step-text">سجّل دخول بحساب <strong>Instagram</strong> الخاص بالبراند</span></div>
+                        <div class="step-item"><span class="step-number">6</span><span class="step-text">راجع الصلاحيات (الوصول للرسائل) واضغط <strong>Confirm</strong></span></div>
+                        <div class="step-item"><span class="step-number">7</span><span class="step-text">لو طُلب منك، أضف حساب إنستغرام لنفس <strong>Business Portfolio</strong> واضغط <strong>Continue</strong></span></div>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #1E90DD 0%, #0D5BA5 100%); padding: 40px; border-radius: 8px; text-align: center; margin-top: 15px; box-shadow: 0 5px 20px rgba(30, 144, 221, 0.2);">
+                        <h4 style="color: white; margin-bottom: 15px; font-size: 18px;">📺 شرح ربط حساب إنستغرام بفيسبوك</h4>
+                        <a href="https://youtu.be/VnXAs6Z4N5c" target="_blank" style="display: inline-block; background: #FFB800; color: #0D5BA5; padding: 14px 32px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all 0.3s ease; border: none; cursor: pointer;">
+                            🎬 شاهد الفيديو على YouTube
+                        </a>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-icon">📱</span> الطريقة البديلة: من تطبيق Instagram (Accounts Center)</h3>
+                    <p class="step-subtitle">أسرع طريق من الموبايل لربط الحسابين على مستوى الحساب</p>
+
+                    <div class="steps-list">
+                        <div class="step-item"><span class="step-number">1</span><span class="step-text">افتح بروفايلك في تطبيق <strong>Instagram</strong> واضغط القائمة (☰)</span></div>
+                        <div class="step-item"><span class="step-number">2</span><span class="step-text">روح على <strong>Settings and activity</strong> ثم <strong>Accounts Center</strong></span></div>
+                        <div class="step-item"><span class="step-number">3</span><span class="step-text">اضغط <strong>Add accounts</strong> ثم اختر <strong>Facebook</strong></span></div>
+                        <div class="step-item"><span class="step-number">4</span><span class="step-text">سجّل دخول بحساب الفيسبوك وأكّد الربط بالضغط على <strong>Done</strong></span></div>
+                    </div>
+
+                    <div class="info-box">
+                        ⚠️ <strong>لو ما يتربط:</strong> تأكّد إن حساب الإنستغرام مو مربوط مسبقاً بصفحة أو Business Portfolio ثانية — لو نعم، فك الربط القديم أول ثم أعد الربط.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <h4>شكراً لثقتك بـ Watad Agency</h4>
+            <p>نحن هنا لمساعدتك في بناء حضورك الرقمي وإدارة حملاتك الإعلانية بكفاءة</p>
+            <p>آخر تحديث: يونيو 2026</p>
+            <div class="footer-contact">
+                social@watad.agency (Social Media) | performance@watad.agency (Meta Ads) | Watad Agency
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabName, evt) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
